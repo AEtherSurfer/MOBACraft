@@ -1,4 +1,4 @@
-DOTACraft
+MOBACraft
 =========
 
-DOTA plugin for MineCraft Bukkit servers
+MOBA plugin for MineCraft Bukkit servers
