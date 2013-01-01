@@ -27,16 +27,20 @@ Roadmap
     - creep barraks
     - melee creeps (Zombies?, Zombie Pigmen?, spiders)
     - range creeps (Skeletons?, Wither Skeletons?)
-    - zombies and crskeletons eeps can wear colored leather armor to indicate which team they are on
+    - zombies and skeletons can wear colored leather armor to indicate which team they are on
 6. Towers
     - fire charges?
 6. Economy
     - creep kill rewards
-7. Player Characters
-    - various traits skills of each hero
-    - respawn with all 
+7. Heroes
+    - various traits, abilities of each hero
+    - abilities are represented by items in the hotkey slots
 8. Shops
-9. Spectators
+    - Tower Teleport Shop Signs, one sign for each of your team's towers
+    - Maybe use Essentials Eco Shop Signs?  Does this work on named items?
+9. Wards
+    - Maps? 
+10. Spectators
     
 References
 ----------
