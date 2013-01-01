@@ -32,6 +32,8 @@ Roadmap
     - fire charges?
 6. Economy
     - creep kill rewards
+    - hero kill rewards
+    - tower kill rewards
 7. Heroes
     - various traits, abilities of each hero
     - abilities are represented by items in the hotkey slots
