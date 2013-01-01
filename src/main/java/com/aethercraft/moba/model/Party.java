@@ -1,28 +1,25 @@
 package com.aethercraft.moba.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.aethercraft.moba.Conf;
+import com.aethercraft.moba.MOBACraftException;
 
 public class Party {
-
-	private String name;
 	private Player leader;
-	List<Player> members = new ArrayList<Player>(Conf.teamSizeMax);
-	
-	public Party(String name, Player leader) {
-		super();
-		this.name = name;
+	private List<Player> members = new ArrayList<Player>(Conf.teamSizeMax);
+	private Game game;
+	private Team team;
+
+	public Party(Player leader) {
 		this.leader = leader;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		try {
+			add(leader);
+		} catch (FullException e) {
+			throw new MOBACraftException("Is teamSizeMax set to 0?", e);
+		}
 	}
 
 	public Player getLeader() {
@@ -33,18 +30,60 @@ public class Party {
 		this.leader = leader;
 	}
 
-	public void add(Player newMember) throws Party.FullException {
+	/**
+	 * 
+	 * @param newMember
+	 * @return true if added, false if was already a member of this party
+	 * @throws Party.FullException
+	 */
+	public boolean add(Player newMember) throws Party.FullException {
 		if (members.size() >= Conf.teamSizeMax) {
-			throw new Party.FullException();
+			throw new Party.FullException("Cannot add " + newMember + ", party is full.");
 		}
+		if (newMember.getParty() == this) {
+			return members.add(newMember);
+		}
+		newMember.getParty()._remove(newMember);
+		newMember.setParty(this);
+		return members.add(newMember);
 	}
-	
-	public void remove(Player member) {
-		members.remove(member);
+
+	public boolean remove(Player member) {
+		member.setParty(null);
+		return _remove(member);
+	}
+
+	public int size() {
+		return members.size();
+	}
+
+	public List<Player> getMembers() {
+		return Collections.unmodifiableList(members);
+	}
+
+	public void setGame(Game game, Team team) {
+		this.game = game;
+		this.team = team;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public Team getTeam() {
+		return team;
+	}
+
+	private boolean _remove(Player member) {
+		return members.remove(member);
 	}
 
 	@SuppressWarnings("serial")
 	public static class FullException extends Exception {
+
+		public FullException(String msg) {
+			super(msg);
+		}
 
 	}
 }
