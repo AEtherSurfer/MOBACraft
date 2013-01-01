@@ -1,0 +1,10 @@
+name: MOBACraft
+version: ${project.version}-b${BUILD_NUMBER}
+main: com.aethercraft.moba.P
+author: AEtherSurfer
+authors: [AEtherSurfer, fragstel]
+softdepend: [Essentials, mcMMO]
+commands:
+  moba:
+    description: Reference command for MOBACraft.
+    aliases: [mb]
