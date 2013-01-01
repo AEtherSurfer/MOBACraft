@@ -1,5 +1,6 @@
 package com.aethercraft.moba.model;
 
+import com.aethercraft.moba.model.hero.Ability;
 import com.aethercraft.moba.model.hero.Hero;
 
 public class Player {
@@ -7,7 +8,7 @@ public class Player {
 	public int gold = 0;
 
 	private int heroLevel = 0;
-	private int[] abilityLevel = new int[5];
+	private int[] abilityLevel = new int[Ability.Index.values().length];
 	private Party party = new Party(this);
 
 	public void setParty(Party party) {
@@ -23,7 +24,7 @@ public class Player {
 		return heroLevel;
 	}
 
-	public int incAbilityLevel(AbilityIdx idx) {
+	public int incAbilityLevel(Ability.Index idx) {
 		int i = idx.ordinal();
 		int abilityMaxLevel = getMax(idx, heroLevel);
 		if (abilityLevel[i] < abilityMaxLevel) {
@@ -32,20 +33,11 @@ public class Player {
 		return abilityLevel[i];
 	}
 
-	public int getAbilityLevel(AbilityIdx idx) {
+	public int getAbilityLevel(Ability.Index idx) {
 		return abilityLevel[idx.ordinal()];
 	}
 
-	private int getMax(AbilityIdx idx, int heroLevel) {
+	private int getMax(Ability.Index idx, int heroLevel) {
 		return 0;
-	}
-
-	public enum AbilityIdx {
-		BOOST(10),FIRST(4),SECOND(4),THIRD(4),ULT(3);
-		public final int maxLevel;
-
-		private AbilityIdx(int maxLevel) {
-			this.maxLevel = maxLevel;
-		}
 	}
 }
