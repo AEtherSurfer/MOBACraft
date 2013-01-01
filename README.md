@@ -27,6 +27,7 @@ Roadmap
     - creep barraks
     - melee creeps (Zombies?, Zombie Pigmen?, spiders)
     - range creeps (Skeletons?, Wither Skeletons?)
+    - zombies and creeps can wear colored armor to indicate which team they are on
 6. Towers
     - fire charges?
 6. Economy
