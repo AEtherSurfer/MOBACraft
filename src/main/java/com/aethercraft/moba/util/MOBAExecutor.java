@@ -21,12 +21,18 @@ public class MOBAExecutor implements CommandExecutor {
 	public MOBAExecutor (Mobacraft plugin) {
 		this.setPlugin(plugin);
 	}
-	
+
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		if (args.length > 4) {
+			sender.sendMessage("Too many arguments.  Both sender and cmd are required.");
+			return false;
+		}
+		if (args.length < 2) {
+			sender.sendMessage("Not enough arguments.  Both sender and cmd are required.");
+			return false;
+		}
 		// implementation
 		return false;
-
 	}
-
 
 }
