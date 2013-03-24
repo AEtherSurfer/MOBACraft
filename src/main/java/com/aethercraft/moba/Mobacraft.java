@@ -4,7 +4,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Mobacraft extends JavaPlugin {
+public class MOBACraft extends JavaPlugin {
 
 	private Listener mobaListener;
 

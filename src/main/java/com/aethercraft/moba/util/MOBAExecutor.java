@@ -4,21 +4,21 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import com.aethercraft.moba.Mobacraft;
+import com.aethercraft.moba.MOBACraft;
 
 public class MOBAExecutor implements CommandExecutor {
 	
-	private Mobacraft plugin;
+	private MOBACraft plugin;
 	
-	public Mobacraft getPlugin() {
+	public MOBACraft getPlugin() {
 		return plugin;
 	}
 
-	public void setPlugin(Mobacraft plugin) {
+	public void setPlugin(MOBACraft plugin) {
 		this.plugin = plugin;
 	}
 	
-	public MOBAExecutor (Mobacraft plugin) {
+	public MOBAExecutor (MOBACraft plugin) {
 		this.setPlugin(plugin);
 	}
 
