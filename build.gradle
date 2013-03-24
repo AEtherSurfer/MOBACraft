@@ -8,6 +8,14 @@ ext {
 apply plugin: 'scala'
 apply plugin: 'eclipse-wtp'
 
+apply plugin: 'eclipse'
+
+eclipse {
+	classpath {
+	   downloadSources=true
+	}
+}
+
 group = "com.aethercraft"
 version = "0.0.1-SNAPSHOT"
 
@@ -38,7 +46,9 @@ dependencies {
 	scalaLibrary "org.scala-lang:scala-library:$scalaVersion"
 
 	compile "org.scala-lang:scala-library:$scalaVersion"
-	compile group: 'org.bukkit', name: 'bukkit', version: '1.5.1-R0.1-SNAPSHOT'
+
+	compile 'javax.servlet:servlet-api:2.4'
+	compile 'org.bukkit:bukkit:1.5.1-R0.1-SNAPSHOT'
 }
 
 processResources  {
