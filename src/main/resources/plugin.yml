@@ -1,5 +1,5 @@
 name: MOBACraft
-version: ${project.version}-b${BUILD_NUMBER}
+version: v@version@-b@BUILD_NUMBER@
 main: com.aethercraft.moba.P
 author: AEtherSurfer
 authors: [AEtherSurfer, fragstel]

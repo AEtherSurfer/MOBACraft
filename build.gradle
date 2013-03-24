@@ -1,0 +1,52 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+
+ext {
+  scalaVersion = '2.10.1'
+}
+
+apply plugin: 'scala'
+apply plugin: 'eclipse-wtp'
+
+group = "com.aethercraft"
+version = "0.0.1-SNAPSHOT"
+
+sourceCompatibility = 1.6
+
+repositories {
+    mavenCentral()
+    mavenRepo name:'scala-releases', url:'http://scala-tools.org/repo-releases/'
+    mavenRepo name:'scala-snapshots', url:'http://scala-tools.org/repo-snapshots/'
+	maven {
+		url "http://repo.bukkit.org/content/groups/public"
+	}
+}
+
+configurations {
+    scalaCompiler
+    scalaLibrary
+}
+
+tasks.withType(ScalaCompile) {
+  scalaCompileOptions.useCompileDaemon = false
+  scalaCompileOptions.useAnt = false
+  scalaCompileOptions.additionalParameters = ['-target:jvm-1.6']
+}
+
+dependencies {
+	scalaCompiler "org.scala-lang:scala-compiler:$scalaVersion"
+	scalaLibrary "org.scala-lang:scala-library:$scalaVersion"
+
+	compile "org.scala-lang:scala-library:$scalaVersion"
+	compile group: 'org.bukkit', name: 'bukkit', version: '1.5.1-R0.1-SNAPSHOT'
+}
+
+processResources  {
+	filter ReplaceTokens, tokens: [
+		version: project.version,
+	]
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.4'
+}
