@@ -1,6 +1,5 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
-
 ext {
   scalaVersion = '2.10.1'
 }
@@ -58,5 +57,5 @@ processResources  {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.4'
+    gradleVersion = '1.5'
 }
