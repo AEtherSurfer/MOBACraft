@@ -1,6 +1,6 @@
 name: MOBACraft
 version: v@version@-b@BUILD_NUMBER@
-main: com.aethercraft.moba.P
+main: com.aethercraft.moba.MOBACraft
 author: AEtherSurfer
 authors: [AEtherSurfer, fragstel]
 softdepend: [Essentials, mcMMO]
