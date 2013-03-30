@@ -4,5 +4,5 @@ target
 .settings
 .gradle
 .cache
-/build
+build/
 bin/
