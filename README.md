@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/AEtherSurfer/MOBACraft.png)](https://travis-ci.org/AEtherSurfer/MOBACraft)
 MOBACraft
 =========
 
