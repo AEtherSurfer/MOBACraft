@@ -18,9 +18,9 @@ class MOBAListener(p: MOBACraft) extends Listener {
 		p.getLogger.log(Level.INFO, "PlayerInteractEvent: " + e.getClickedBlock()+":"+e.getPlayer().getName())
 		e.getClickedBlock() match {
 		  case b: Block if b.getType == Material.WOOL && DyeColor.getByWoolData(b.getData) == DyeColor.RED =>
-		    p.model.state.joinTeam(e.getPlayer, "Red")
+		    p.model.state.join(e.getPlayer, "Red")
 		  case b: Block if b.getType == Material.WOOL && DyeColor.getByWoolData(b.getData) == DyeColor.BLUE =>
-		    p.model.state.joinTeam(e.getPlayer, "Blu")
+		    p.model.state.join(e.getPlayer, "Blu")
 		}
 	}
 
