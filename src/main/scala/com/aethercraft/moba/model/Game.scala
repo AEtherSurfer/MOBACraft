@@ -13,13 +13,13 @@ import org.bukkit.scoreboard.DisplaySlot
 
 case class Game() extends StateModel[GameState] {
   var pcs = Map[Player, PlayerCharacter]()
-  val mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard()
+  val scoreboard = Bukkit.getScoreboardManager().getNewScoreboard()
   def updateScores(player: Player) {
     val pc = pcs(player)
-    val oLKD = mainScoreboard.getObjective("LKD")
+    val oLKD = scoreboard.getObjective("LKD")
     val sLKD = oLKD.getScore(player)
     sLKD.setScore(player.getLevel * 1000000 + pc.kills * 1000 + pc.deaths)
-    val oLHM = mainScoreboard.getObjective("LHM")
+    val oLHM = scoreboard.getObjective("LHM")
     val sLHM = oLHM.getScore(player)
     sLHM.setScore(player.getLevel * 1000000 + (player.getHealth*5) * 1000 + (player.getFoodLevel*5))
   }
@@ -33,32 +33,32 @@ case class Game() extends StateModel[GameState] {
     }
   }
   def joinTeam(party: Party, teamName: String) {
-    joinTeam(party, mainScoreboard.getTeam(teamName))
+    joinTeam(party, scoreboard.getTeam(teamName))
   }
   def died(party: Party) {
     
   }
   def resetScoreboard() {
-    for(t <- mainScoreboard.getTeams()) {
+    for(t <- scoreboard.getTeams()) {
       t.unregister()
     }
-    for(p <- mainScoreboard.getPlayers()) {
-      mainScoreboard.resetScores(p)
+    for(p <- scoreboard.getPlayers()) {
+      scoreboard.resetScores(p)
     }
-    for(o <- mainScoreboard.getObjectives()) {
+    for(o <- scoreboard.getObjectives()) {
       o.unregister()
     }
     for(t <- List(("Blu", ChatColor.BLUE), ("Red", ChatColor.RED))) {
-      val team = mainScoreboard.registerNewTeam(t._1)
+      val team = scoreboard.registerNewTeam(t._1)
       team.setPrefix(t._2.toString())
       team.setSuffix(ChatColor.RESET.toString())
       team.setAllowFriendlyFire(false)
       team.setCanSeeFriendlyInvisibles(true)
     }
-    val oLKD = mainScoreboard.registerNewObjective("LKD", "dummy")
+    val oLKD = scoreboard.registerNewObjective("LKD", "dummy")
     oLKD.setDisplayName("                     Lvl   K   D")
     oLKD.setDisplaySlot(DisplaySlot.SIDEBAR)
-    val oLHM = mainScoreboard.registerNewObjective("LHM", "dummy")
+    val oLHM = scoreboard.registerNewObjective("LHM", "dummy")
     oLKD.setDisplayName("                     Lvl   H   M")
     oLKD.setDisplaySlot(DisplaySlot.BELOW_NAME)
     
