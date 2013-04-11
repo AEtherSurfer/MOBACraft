@@ -21,10 +21,15 @@ case class Party(var leader: Player) {
   }
 
   def remove(member: Player) {
-    Party.parties = Party.parties - member
-    members = members diff List(member)
-    if (member == leader) {
-      leader = members.last
+    game.state match {
+      case _: PreGame | _: ActiveGame =>
+        throw GameStateException("May not leave a party while it is in an active game.")
+      case _ => 
+        Party.parties = Party.parties - member
+        members = members diff List(member)
+        if (member == leader) {
+          leader = members.last
+        }
     }
   }
 

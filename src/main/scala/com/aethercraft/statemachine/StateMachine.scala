@@ -15,4 +15,4 @@ abstract class State[M <: StateModel[S], S <: State[_,_]](model: StateModel[S]) 
   }
 }
 
-class StateMachineException(val msg: String) extends RuntimeException(msg)
+class StateMachineException(msg: String) extends RuntimeException(msg)

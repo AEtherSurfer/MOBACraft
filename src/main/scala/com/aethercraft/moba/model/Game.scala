@@ -28,7 +28,7 @@ case class Game() extends StateModel[GameState] {
   def join(party: Party, team: Team) {
     if (team.getSize + party.size > Conf.teamSizeMax) {
       throw new GameStateException("Cannot join team, party size exceeds the number of open team slots")
-    } 
+    }
     for(p <- party.members) {
       team.addPlayer(p)
       updateScores(p)
@@ -71,6 +71,10 @@ case class Game() extends StateModel[GameState] {
   def resetPlayers() {
     pcs = Map[Player, PlayerCharacter]()
   }
+}
+
+object Game {
+  var games = Map[Player, Game]()
 }
 
 abstract class GameState(model: Game) extends State[Game, GameState](model) {
@@ -164,4 +168,4 @@ case class PostGame(model: Game) extends GameState(model) {
   }
 }
 
-class GameStateException(msg: String) extends StateMachineException(msg)
+case class GameStateException(msg: String) extends StateMachineException(msg)
