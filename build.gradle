@@ -1,7 +1,7 @@
 import org.apache.tools.ant.filters.ReplaceTokens
 
 ext {
-  scalaVersion = '2.10.1'
+  scalaVersion = '2.10.2'
 }
 
 apply plugin: 'scala'
