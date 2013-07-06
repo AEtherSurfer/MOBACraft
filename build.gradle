@@ -1,7 +1,6 @@
-import org.apache.tools.ant.filters.ReplaceTokens
-
 ext {
   scalaVersion = '2.10.2'
+  buildNumber = ''
 }
 
 apply plugin: 'scala'
@@ -51,9 +50,14 @@ dependencies {
 }
 
 processResources  {
-	filter ReplaceTokens, tokens: [
-		version: project.version,
-	]
+	filter {
+		line ->
+		line
+		.replace('${name}', project.name)
+		.replace('${version}', project.version)
+		.replace('${buildNumber}', project.ext.buildNumber)
+		.replace('${pluginMainClass}', "${project.group}.${project.name.toLowerCase()}.$project.name")
+	}
 }
 
 //include dependencies for a "fat jar"
