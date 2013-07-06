@@ -23,7 +23,7 @@ case class Game() extends StateModel[GameState] {
     sLKD.setScore(player.getLevel * 1000000 + pc.kills * 1000 + pc.deaths)
     val oLHM = scoreboard.getObjective("LHM")
     val sLHM = oLHM.getScore(player)
-    sLHM.setScore(player.getLevel * 1000000 + (player.getHealth*5) * 1000 + (player.getFoodLevel*5))
+    sLHM.setScore(player.getLevel * 1000000 + (player.getHealth*5).toInt * 1000 + (player.getFoodLevel*5))
   }
   def join(party: Party, team: Team) {
     if (team.getSize + party.size > Conf.teamSizeMax) {

@@ -46,7 +46,7 @@ dependencies {
 	compile "org.scala-lang:scala-library:$scalaVersion"
 
 	compile 'javax.servlet:servlet-api:2.4'
-	compile 'org.bukkit:bukkit:1.5.1-R0.2-SNAPSHOT'
+	compile 'org.bukkit:bukkit:1.6.1-R0.1-SNAPSHOT'
 }
 
 processResources  {
